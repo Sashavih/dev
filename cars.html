@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form {
+            width: 25em;
+            height: 31em;
+            background-color: rgb(236, 241, 245);
+            margin: auto;
+        }
+
+        fieldset {
+            border: none;
+        }
+
+        .form__title {
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            text-align: center;
+            border-bottom: 2px solid rgb(178, 201, 223);
+        }
+
+        .text {
+            font-size: large;
+            font-weight: bold;
+            width: 7em;
+
+        }
+
+        .btn-box {
+            border-top: 2px solid rgb(178, 201, 223);
+            text-align: center;
+            margin-top: 1em;
+        }
+
+        .btn {
+            margin-top: 1.5em;
+            height: 3em;
+            border-radius: 10px;
+            border-style: none;
+            background-color: rgb(184, 205, 226);
+        }
+
+        .btn:hover {
+            background-color: rgb(165, 184, 203);
+        }
+
+        .clear {
+            height: 1.5em;
+            width: 4em;
+            margin-left: 0.8em;
+            border-radius: 7px;
+            border-style: none;
+            background-color: rgb(184, 205, 226);
+        }
+
+        .clear:hover {
+            background-color: rgb(165, 184, 203);
+        }
+
+        .result {
+            margin: 1em auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form">
+        <h1 class="form__title">Cost Calculator</h1>
+        <fieldset>
+            <p class="text">Brand</p>
+            <select class="auction">
+                <option value="100">BMW</option>
+                <option value="150">Mercedes</option>
+                <option value="200">Audi</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <p class="text">Status</p>
+            <div>
+                <label for="new">
+                    <input class="status" type="radio" name="car-status" id="new">
+                    <span>New</span>
+                </label>
+                <label for="used">
+                    <input class="status" type="radio" name="car-status" id="used">
+                    <span>Used</span>
+                </label>
+                <button class="clear" id="clear1" type="button">Clear</button>
+            </div>
+        </fieldset>
+        <fieldset>
+            <p class="text">Services</p>
+            <label for="one">
+                <input class="input" type="radio" id="one" value="20">
+                <span>Washing</span>
+            </label>
+            <label for="two">
+                <input class="input" type="radio" id="two" value="30">
+                <span>Painting</span>
+            </label>
+            <label for="three">
+                <input class="input" type="radio" id="three" value="40">
+                <span>Repair</span>
+            </label>
+            <button class="clear" id="clear2" type="button">Clear</button>
+        </fieldset>
+
+        <div class="btn-box">
+            <button type="submit" class="btn">Calculate</button>
+            <p class="result"></p>
+        </div>
+    </form>
+    <script>
+        let form = document.querySelector('.form');
+        let auction = document.querySelector('.auction');
+        let inputs = document.querySelectorAll('.input');
+        let result = document.querySelector('.result');
+        let newCar = document.getElementById('new');
+        let usedCar = document.getElementById('used');
+        let carStatus = document.querySelectorAll('.status');
+        let clear1 = document.getElementById('clear1');
+        let clear2 = document.getElementById('clear2');
+
+        clear1.addEventListener('click', () => {
+            for (let i = 0; i < carStatus.length; i++) {
+                if (carStatus[i].checked) {
+                    carStatus[i].checked = false;
+                }
+            }
+        });
+
+        clear2.addEventListener('click', () => {
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].checked) {
+                    inputs[i].checked = false;
+                }
+            }
+        });
+
+
+        form.onsubmit = (evt) => {
+            let sum;
+            let sum2 = auction.value;
+            sum = +sum2;
+            console.log(sum);
+            evt.preventDefault();
+
+            for (let i = 0; i < carStatus.length; i++) {
+
+                if (newCar.checked) {
+                    sum = sum2 * 100;
+                }
+                if (usedCar.checked) {
+                    sum = sum2 * 10;
+                }
+                carStatus[i].checked = false;
+            };
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].checked) {
+                    sum = sum + Number(inputs[i].value);
+                }
+                inputs[i].checked = false;
+            }
+            result.innerHTML = `${sum} $`;
+        };
+        auction.addEventListener('change', () => {
+            result.innerHTML = '';
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

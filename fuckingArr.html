@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Калькулятор</h1>
+    <input type="text" class="input" placeholder="Введите число">
+    <button type="button" class="btn">Click me</button>
+
+    <p class="sum"></p>
+    <p class="sort"></p>
+    <button type="button" class="clean">Clean me</button>
+    <script>
+
+        let input = document.querySelector('.input');
+        let btn = document.querySelector('.btn');
+        let sumBox = document.querySelector('.sum');
+        let sort = document.querySelector('.sort');
+        let clean = document.querySelector('.clean');
+        let numbers = [];
+        let sortArr = [];
+
+
+        input.addEventListener('change', () => {
+            sumBox.innerHTML = '';
+            if (input.value !== '' && !/[^0-9]/g.test(input.value)) {
+                numbers.push(Number(input.value));
+                console.log(numbers);
+                input.value = '';
+            }
+            else {
+                sumBox.textContent = 'Введите число!';
+                input.value = '';
+            }
+        });
+
+
+        btn.addEventListener('click', () => {
+            console.log(numbers);
+            function BubbleSort(numbers) {
+                let n = numbers.length;
+                for (let i = 0; i < (n - 1); i++) {
+                    for (let j = 0; j < (n - 1 - i); j++) {
+                        if (numbers[j + 1] < numbers[j]) {
+                            let t = numbers[j + 1];
+                            numbers[j + 1] = numbers[j];
+                            numbers[j] = t;
+                        }
+                    }
+                }
+                return numbers;
+            }
+            BubbleSort(numbers);
+            console.log(numbers);
+            sort.innerHTML = `Сортировочные числа : ${numbers}`;
+
+            let sum = 0;
+            for (let num of numbers) {
+                sum = sum + num;
+            }
+            console.log(sum);
+            sumBox.innerHTML = `Сумма чисел : ${sum}`;
+        });
+
+        clean.addEventListener('click', () => {
+            sumBox.innerHTML = '';
+            sort.innerHTML = '';
+            numbers.length = 0;
+
+        });
+
+    </script>
+</body>
+
+</html>
