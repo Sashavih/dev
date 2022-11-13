@@ -24,22 +24,22 @@
 </head>
 
 <body>
-    <form class="box">
+    <div class="box">
         <input type="text" id="input" placeholder="Введите ФИО">
         <button type="submit" class="btn">Нажми меня</button>
 
-    </form>
+    </div>
     <div class="nameBox">
         <div>
-            <p>Имя</p><br>
+            <p>Имя</p>
             <p class="nameBox__elem" id="firstName"></p>
         </div>
         <div>
-            <p>Фамилия</p><br>
+            <p>Фамилия</p>
             <p class="nameBox__elem" id="lastName"></p>
         </div>
         <div>
-            <p>Отчество</p><br>
+            <p>Отчество</p>
             <p class="nameBox__elem" id="patronymic"></p>
         </div>
 
@@ -52,16 +52,16 @@
         let lastName = document.getElementById('lastName');
         let patronymic = document.getElementById('patronymic');
         let nameElem = document.querySelectorAll('.nameBox__elem');
-        let form = document.querySelector('.box');
         let names = [];
 
-        form.onsubmit = () => {
+        btn.addEventListener('click', () => {
 
             let name = input.value.toLowerCase();
             if (name !== '') {
                 names = name.split(' ').filter(Boolean);
                 console.log(names);
                 input.value = '';
+
                 let arr = [];
 
 
@@ -78,7 +78,7 @@
             else {
                 alert('Введите ФИО!');
             }
-        };
+        });
 
 
 
