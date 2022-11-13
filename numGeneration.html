@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin-top: 2em;
+            margin-bottom: 1em;
+            text-align: center;
+            width: 12em;
+        }
+
+        .item {
+            background-color: rgba(211, 181, 236, 0.782);
+            height: 2em;
+        }
+
+        .btn {
+            margin-bottom: 2em;
+            border-radius: 5px;
+            background-color: rgb(211, 181, 236);
+            width: 7em;
+            height: 2.5em;
+            border: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn" type="submit">Generation</button>
+    <div>
+        <p>Numbers</p>
+        <p id="randomNum" class="item"></p>
+    </div>
+    <div>
+        <p>Minimum</p>
+        <p id="min" class="item"></p>
+    </div>
+    <div>
+        <p>Maximum</p>
+        <p id="max" class="item"></p>
+    </div>
+    <div>
+        <p>Arithmetic mean</p>
+        <p id="mid" class="item"></p>
+    </div>
+    <div>
+        <p>Sum</p>
+        <p id="sum" class="item"></p>
+    </div>
+    <div>
+        <p>Multiplication</p>
+        <p id="multiplication" class="item"></p>
+    </div>
+
+    <script>
+        let btn = document.querySelector('.btn');
+        let randomNum = document.getElementById('randomNum');
+        let maximum = document.getElementById('max');
+        let minimum = document.getElementById('min');
+        let sumNumbers = document.getElementById('sum');
+        let middle = document.getElementById('mid');
+        let multiplication = document.getElementById('multiplication');
+        let random = [];
+
+
+        btn.addEventListener('click', () => {
+            random.length = 0;
+
+            for (let i = 0; i < 10; i++) {
+                let result = Math.round((Math.random() - 0.5) * 20);
+                random.push(result);
+                randomNum.innerHTML = random;
+
+            }
+            let sum = 0;
+            for (let i of random) {
+                sum = sum + i;
+                sumNumbers.innerHTML = sum;
+            }
+            let mult = 1;
+            for (let i of random) {
+                mult = mult * i;
+                multiplication.innerHTML = Math.abs(mult);
+            }
+
+
+
+            let max = Math.max.apply(null, random);
+            maximum.innerHTML = max;
+            let min = Math.min.apply(null, random);
+            minimum.innerHTML = min;
+            let mid = sum / 10;
+            middle.innerHTML = mid;
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>

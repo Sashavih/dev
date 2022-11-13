@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea:focus::-webkit-input-placeholder {
+            color: transparent;
+        }
+
+        textarea:focus:-moz-placeholder {
+            color: transparent;
+        }
+
+        textarea:focus::-moz-placeholder {
+            color: transparent;
+        }
+
+        textarea:focus:-ms-input-placeholder {
+            color: transparent;
+        }
+
+        body {
+
+            margin: auto;
+            width: 30rem;
+
+        }
+
+        .box {
+            margin-top: 2em;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        #comment {
+            text-align: start;
+            border: 1px solid rgb(198, 89, 190);
+            outline: none;
+            height: 6rem;
+            text-align: start;
+            border-radius: 2px;
+        }
+
+        .box__btn {
+            align-self: center;
+            width: 30%;
+            margin-top: 1em;
+            background-color: rgb(198, 89, 190);
+            border: none;
+            border-radius: 2px;
+            height: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <textarea id="comment" type="text" placeholder="Введите что нибудь.."></textarea>
+        <button class="box__btn" type="submit">Send </button>
+    </div>
+
+
+    <script>
+        let box = document.querySelector('box');
+        let text = document.getElementById('comment');
+        let btn = document.querySelector('.box__btn');
+
+        function checkSpam() {
+            const lowerStr = text.value.toLowerCase();
+            const reg = /(viagra*)|(xxx*)/g;
+            const newStrForAdding = lowerStr.replace(reg, "***");
+            addElement(newStrForAdding);
+            text.value = '';
+
+        }
+
+        function addElement(elementText) {
+            const elementDiv = document.createElement('div');
+            elementDiv.innerHTML = elementText;
+            document.querySelector('.box').appendChild(elementDiv);
+        }
+        btn.addEventListener('click', checkSpam);
+
+    </script>
+</body>
+
+</html>
