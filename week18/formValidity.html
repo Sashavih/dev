@@ -131,8 +131,8 @@
                 pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" required>
             <input type="password" id="password" class="form__item form__item_color" placeholder="Password"
                 name="password" pattern="^\d{1,}$" title="Введите числа" maxlength="7" required>
-            <input type="password" id="approve" class="form__item form__item_color" placeholder="Confirm password"
-                name="password" maxlength="7" required>
+            <input type="password" id="approve" class="form__item form__item_color" pattern="^\d{1,}$"
+                placeholder="Confirm password" name="password" maxlength="7" required>
             <input type="tel" id="tel" class="form__item form__item_color" placeholder="Phone number (+7...)" name="tel"
                 pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" minlength="10" maxlength="20"
                 title="8/+7..." required>
@@ -198,53 +198,9 @@
                 if (conf.value !== "" && conf.value != password.value) {
                     approvePassword.classList.add("error");
                 }
-                if (item.value == "") {
-                    item.classList.remove("error");
-                    item.classList.remove("valid");
-                }
+
             });
         });
-
-
-
-        /*if (login.value.length < 5) {
-evt.preventDefault();
-alert('Логин должен содержать минимум 5 символов.');
-}
-else if (password.value.length < 6) {
-evt.preventDefault();
-alert('Пароль должен содержать 6 знаков.');
-}
-if (inputs === 0) {
-evt.preventDefault();
-alert('Заполни все поля!');
-
-} else {
-alert('Спасибо за регистрацию!');
-}
-
-
-else if (inputs.value == 0) {
-evt.preventDefault();
-}
-else if (conf.value !== password.value) {
-evt.preventDefault();
-alert('Пароли не совпадают.');
-
-}
-else if (tel.value.length !== 12) {
-evt.preventDefault();
-alert('Введите корректный номер телефона.');
-}
-
-else {
-alert('Спасибо за регистрацию!');
-}
-
-});*/
-//input:valid {
-           // border-color: rgb(33, 184, 134);
-       // }
 
 
     </script>

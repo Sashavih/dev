@@ -123,9 +123,9 @@
                 localStorage.setItem('localNotes', inputNote);
             }
             localStorage.setItem('localNotes', JSON.stringify(filterAllNotes));
-
-
+    
         }
+
         push.addEventListener('click', () => {
             let input = document.querySelector('#newtask input').value;
             eddLocalNotes();
