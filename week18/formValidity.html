@@ -29,7 +29,7 @@
         }
 
         .body {
-            background-color: rgb(33, 184, 134);
+            background-color: rgb(71, 10, 128);
 
         }
 
@@ -69,7 +69,7 @@
 
 
         .button {
-            background: linear-gradient(rgb(47, 172, 130), rgb(68, 220, 116));
+            background: linear-gradient(rgb(71, 10, 128), rgb(119, 68, 220));
             color: white;
             transition: 1s;
         }
@@ -128,7 +128,7 @@
             <input type="text" id="text" class="form__item form__item_color" placeholder="Login" name="login"
                 pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="Первый символ-буква" required>
             <input type="email" id="email" class="form__item form__item_color" placeholder="Email" name="email"
-                required>
+                pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" required>
             <input type="password" id="password" class="form__item form__item_color" placeholder="Password"
                 name="password" pattern="^\d{1,}$" title="Введите числа" maxlength="7" required>
             <input type="password" id="approve" class="form__item form__item_color" placeholder="Confirm password"
@@ -195,12 +195,12 @@
                     item.classList.remove("error");
                     item.classList.add("valid");
                 }
-                if (conf.value != password.value) {
+                if (conf.value !== "" && conf.value != password.value) {
                     approvePassword.classList.add("error");
                 }
-                else {
-                    approvePassword.classList.remove("error");
-                    approvePassword.classList.add("valid");
+                if (item.value == "") {
+                    item.classList.remove("error");
+                    item.classList.remove("valid");
                 }
             });
         });
