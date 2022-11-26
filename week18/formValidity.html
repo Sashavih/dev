@@ -134,7 +134,7 @@
             <input type="password" id="approve" class="form__item form__item_color" placeholder="Confirm password"
                 name="password" maxlength="7" required>
             <input type="tel" id="tel" class="form__item form__item_color" placeholder="Phone number (+7...)" name="tel"
-                pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" title="" minlength="10" maxlength="20"
+                pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" minlength="10" maxlength="20"
                 title="8/+7..." required>
             <input type="submit" id="btn" class="form__item button" value="Send" name="button">
         </form>
@@ -171,7 +171,7 @@
         let tel = document.getElementById('tel')
         const form = document.querySelector('.form');
         const inputs = document.querySelectorAll('.form__item');
-
+        let approvePassword = document.getElementById('approve');
         let validArr = [];
 
         form.addEventListener('submit', function (evt) {
@@ -179,6 +179,7 @@
             if (conf.value !== password.value) {
                 evt.preventDefault();
                 alert('Пароли не совпадают.');
+
             } else {
                 alert('Спасибо за регистрацию!');
             }
@@ -187,13 +188,20 @@
         );
         let allInputs = [...document.querySelectorAll('.form__item_color')].forEach(item => {
             item.addEventListener('change', () => {
+
                 if (!item.validity.valid) {
                     item.classList.add("error");
                 } else {
                     item.classList.remove("error");
                     item.classList.add("valid");
                 }
-
+                if (conf.value != password.value) {
+                    approvePassword.classList.add("error");
+                }
+                else {
+                    approvePassword.classList.remove("error");
+                    approvePassword.classList.add("valid");
+                }
             });
         });
 
