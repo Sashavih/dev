@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea:focus::-webkit-input-placeholder {
+            color: transparent;
+        }
+
+        textarea:focus:-moz-placeholder {
+            color: transparent;
+        }
+
+        textarea:focus::-moz-placeholder {
+            color: transparent;
+        }
+
+        textarea:focus:-ms-input-placeholder {
+            color: transparent;
+        }
+
+        body {
+
+            margin: auto;
+            width: 30rem;
+
+        }
+
+        .box {
+            margin-top: 2em;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        #comment {
+            text-align: start;
+            border: 1px solid rgb(198, 89, 190);
+            outline: none;
+            height: 6rem;
+            text-align: start;
+            border-radius: 2px;
+        }
+
+        .box__btn {
+            align-self: center;
+            width: 30%;
+            margin-top: 1em;
+            background-color: rgb(198, 89, 190);
+            border: none;
+            border-radius: 2px;
+            height: 2em;
+        }
+
+        input {
+            border-radius: 2px;
+            outline: none;
+            border: 1px solid rgb(198, 89, 190);
+        }
+
+        #name {
+            border: 1px solid rgb(198, 89, 190);
+            outline: none;
+            border-radius: 2px;
+        }
+
+        #avatar {
+            max-width: 30%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Comments</h1>
+    <div id="chat"></div>
+    <div class="box">
+        <input type="url" id="link" placeholder="Введите ссылку на картинку.." value=""><br>
+        <input type="text" placeholder="Name" value="" id="author"><br>
+        <textarea id="comment" type="text" placeholder="Введите что нибудь.."></textarea>
+        <button class="box__btn" type="submit">Send </button>
+    </div>
+
+
+    <script>
+        let box = document.querySelector('box');
+        let btn = document.querySelector('.box__btn');
+        let newStrForAdding = '';
+        let comments = [];
+        let allComments = [];
+
+        document.addEventListener("DOMContentLoaded", function (event) {
+
+            let name = localStorage.getItem("name");
+            if (name !== null) {
+                document.getElementById("author").value = name;
+            }
+            let avatar = localStorage.getItem("avatar");
+            if (avatar !== null) {
+                document.getElementById('link').value = avatar;
+            }
+            const notesString = localStorage.getItem('notes');
+            if (notesString !== null) {
+                allComments = JSON.parse(notesString);
+            }
+            if (allComments.length > 0) {
+                for (let comment of allComments) {
+                    document.getElementById('chat').innerHTML += comment;
+                }
+            }
+        });
+        function addElement() {
+            let author = document.getElementById('author').value;
+            let link = document.getElementById('link').value;
+            let text = document.getElementById('comment').value;
+            comments.push(text);
+
+            for (let comment of comments) {
+                let spamCheck = comment.replace(/(viagra*)|(xxx*)/gi, '***');
+                if (author === '') {
+                    author = 'Noname';
+                }
+                if (link === '') {
+                    link =
+                        'https://abrakadabra.fun/uploads/posts/2021-12/thumbs/1640528649_39-abrakadabra-fun-p-serii-chelovek-na-avu-44.jpg';
+                }
+                newStrForAdding += `<div><img src='${link}' height="50px"/><br><span>${author}</span>:<span>${spamCheck}</span></div>`;
+            }
+            allComments.push(newStrForAdding);
+            if (localStorage.getItem('author') === null) {
+                localStorage.setItem('author', author);
+            }
+            if (localStorage.getItem('avatar') === null) {
+                localStorage.setItem('avatar', link);
+            }
+            localStorage.setItem('notes', JSON.stringify(allComments));
+            document.getElementById('chat').innerHTML = newStrForAdding;
+            location.reload();
+        }
+        btn.addEventListener('click', addElement);
+
+    </script>
+</body>
+
+</html>

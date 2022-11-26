@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <style>
+        body {
+            height: 100vh;
+            background: rgb(83, 98, 143);
+        }
+
+        .container {
+            width: 40%;
+            margin: auto;
+            padding: 30px;
+        }
+
+        #newtask {
+            border: 2px solid rgb(83, 98, 143);
+        }
+
+        #newtask input {
+            width: 70%;
+            height: 45px;
+
+        }
+
+        #newtask input:focus {
+            outline: none;
+
+        }
+
+        #newtask button {
+            background-color: rgb(175, 106, 182);
+            width: 23%;
+            height: 3.7em;
+            border: none;
+            outline: none;
+        }
+
+        #tasks {
+            margin-top: 60px;
+            width: 100%;
+
+        }
+
+        .task {
+            height: 50px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: aliceblue;
+            color: black;
+        }
+
+        .task span {
+            font-size: 15px;
+        }
+
+        .delete {
+
+            width: 30px;
+            height: 30px;
+            margin: 0.6em 0 0 3em;
+            background-image: url("https://cdn-icons-png.flaticon.com/512/656/656958.png");
+            background-size: 20px 20px;
+            background-repeat: no-repeat;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="newtask">
+            <input type="text" id="input" placeholder="Write something..">
+            <button id="push">Add</button>
+        </div>
+        <div id="tasks"></div>
+    </div>
+    <script>
+        let push = document.getElementById('push');
+        let allNotes = [];
+
+
+        document.addEventListener("DOMContentLoaded", function (event) {
+            document.getElementById("input").value = '';
+            let localNotes = localStorage.getItem("localNotes");
+            if (localNotes !== null) {
+                allNotes = JSON.parse(localNotes);
+            }
+            if (allNotes.length > 0) {
+                for (let note of allNotes) {
+                    document.getElementById('tasks').innerHTML += `<div class="task"><span id="taskname">${note}</span><button class ="delete"></button></div>`;;
+                    let currentTasks = document.querySelectorAll('.delete');
+                    for (let i = 0; i < currentTasks.length; i++) {
+                        currentTasks[i].onclick = function () {
+                            this.parentNode.remove();
+                            allNotes.pop();
+                        }
+                    }
+                }
+            }
+
+        });
+        function eddElement() {
+            let inputNote = document.getElementById("input").value;
+            allNotes.push(inputNote);
+            console.log(allNotes);
+            if (localStorage.getItem('localNotes') === null) {
+                localStorage.setItem('localNotes', inputNote);
+            }
+            localStorage.setItem('localNotes', JSON.stringify(allNotes));
+
+
+        }
+        push.addEventListener('click', () => {
+            let input = document.querySelector('#newtask input').value;
+            eddElement();
+            if (input === "") {
+                alert('Введи заметку!');
+            } else {
+                document.querySelector('#tasks').innerHTML += `<div class="task"><span id="taskname">${input}</span><button class ="delete"></button></div>`;
+                let currentTasks = document.querySelectorAll('.delete');
+                for (let i = 0; i < currentTasks.length; i++) {
+                    currentTasks[i].onclick = function () {
+                        this.parentNode.remove();
+                        allNotes.pop();
+                    }
+                }
+                document.querySelector('#newtask input').value = "";
+            }
+        });
+
+    </script>
+</body>
+
+</html>

@@ -78,18 +78,22 @@
                 randomNum.innerHTML = random;
 
             }
-            let sum = 0;
-            for (let i of random) {
-                sum = sum + i;
-                sumNumbers.innerHTML = sum;
-            }
+
             let mult = 1;
             for (let i of random) {
                 mult = mult * i;
                 multiplication.innerHTML = Math.abs(mult);
             }
-
-
+            const initialValue = 0;
+            const sumWithInitial = random.reduce(
+                (total, num) => total + num,
+                initialValue
+            );
+            let sum = 0;
+            for (let i of random) {
+                sum = sum + i;
+                sumNumbers.innerHTML = sumWithInitial;
+            }
 
             let max = Math.max.apply(null, random);
             maximum.innerHTML = max;
@@ -99,6 +103,8 @@
             middle.innerHTML = mid;
 
         });
+
+
 
 
     </script>

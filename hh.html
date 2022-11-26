@@ -55,27 +55,14 @@
             border-radius: 2px;
             height: 2em;
         }
-
-        #author {
-            text-align: start;
-            border: 1px solid rgb(198, 89, 190);
-            outline: none;
-        }
     </style>
 </head>
 
 <body>
-    <h1>Comments</h1>
-    <div id="chat"></div>
-    <form>
-        <div>
-            <input placeholder="Name" type="text" id="author" value="">
-        </div>
-        <div class="box">
-            <textarea id="comment" type="text" placeholder="Some text.."></textarea>
-            <button class="box__btn" type="submit">Send</button>
-        </div>
-    </form>
+    <div class="box">
+        <textarea id="comment" type="text" placeholder="Введите что нибудь.."></textarea>
+        <button class="box__btn" type="submit">Send </button>
+    </div>
 
 
     <script>
@@ -83,27 +70,20 @@
         let text = document.getElementById('comment');
         let btn = document.querySelector('.box__btn');
 
-
-        document.addEventListener("DOMContentLoaded", function (event) {
-            let name = localStorage.getItem("name");
-            if (name == null) {
-                localStorage.setItem('name', author);
-            }
-            if (name != null) {
-                document.getElementById("author").value = name;
-            }
-        });
-
-
         function checkSpam() {
             const lowerStr = text.value.toLowerCase();
             const reg = /(viagra*)|(xxx*)/g;
             const newStrForAdding = lowerStr.replace(reg, "***");
-            console.log(newStrForAdding);
-            let author = document.getElementById('author').value;
-            document.getElementById('chat').innerHTML += `${author}:${newStrForAdding}`;
+            addElement(newStrForAdding);
+            text.value = '';
+
         }
 
+        function addElement(elementText) {
+            const elementDiv = document.createElement('div');
+            elementDiv.innerHTML = elementText;
+            document.querySelector('.box').appendChild(elementDiv);
+        }
         btn.addEventListener('click', checkSpam);
 
     </script>

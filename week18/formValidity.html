@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        :focus::-webkit-input-placeholder {
+            color: transparent
+        }
+
+        :focus::-moz-placeholder {
+            color: transparent
+        }
+
+        :focus:-moz-placeholder {
+            color: transparent
+        }
+
+        :focus:-ms-input-placeholder {
+            color: transparent
+        }
+
+        .title {
+            font-size: x-large;
+            color: rgb(28, 28, 28);
+        }
+
+        .body {
+            background-color: rgb(33, 184, 134);
+
+        }
+
+        .form {
+            border-radius: 5px;
+            text-align: center;
+            width: 20%;
+            height: 60vh;
+            margin: 2em auto auto auto;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-bottom: 1em;
+
+
+        }
+
+        .form__item {
+            margin: auto;
+            outline: 0;
+            width: 70%;
+            height: 3em;
+            border-radius: 5px;
+            border: 1px solid rgb(167, 167, 167);
+            box-shadow: none;
+
+        }
+
+        .form__item_color {
+            background-color: rgba(167, 167, 167, 0.164);
+        }
+
+        .form__item_bg {
+            background-color: rgba(76, 76, 76, 0.164);
+        }
+
+
+        .button {
+            background: linear-gradient(rgb(47, 172, 130), rgb(68, 220, 116));
+            color: white;
+            transition: 1s;
+        }
+
+        .button:hover {
+            transform: scale(1.09);
+        }
+
+        #btn {
+            border: none;
+        }
+
+        .theme {
+            text-align: center;
+        }
+
+        .select {
+
+            margin-top: 6em;
+            width: 8.5em;
+            height: 3em;
+            border-radius: 5px;
+
+        }
+
+        input:focus {
+            border-color: rgb(109, 110, 110);
+        }
+
+
+        .valid {
+            border-color: rgb(26, 204, 58);
+        }
+
+        .error {
+            border-color: rgb(203, 68, 104);
+        }
+    </style>
+
+</head>
+
+<body class="body">
+    <main>
+        <div class="theme"><select class="select" name="theme" id="theme">
+                <option value="">Choose theme</option>
+                <option value="herb">Herb</option>
+                <option value="rose">Rose</option>
+                <option value="sea">Sea</option>
+                <option value="cosmos">Cosmos</option>
+
+            </select>
+        </div>
+        <form class="form">
+            <h1 class="title">Registration</h1>
+
+            <input type="text" id="text" class="form__item form__item_color" placeholder="Login" name="login"
+                pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" title="Первый символ-буква" required>
+            <input type="email" id="email" class="form__item form__item_color" placeholder="Email" name="email"
+                required>
+            <input type="password" id="password" class="form__item form__item_color" placeholder="Password"
+                name="password" pattern="^\d{1,}$" title="Введите числа" maxlength="7" required>
+            <input type="password" id="approve" class="form__item form__item_color" placeholder="Confirm password"
+                name="password" maxlength="7" required>
+            <input type="tel" id="tel" class="form__item form__item_color" placeholder="Phone number (+7...)" name="tel"
+                pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" title="" minlength="10" maxlength="20"
+                title="8/+7..." required>
+            <input type="submit" id="btn" class="form__item button" value="Send" name="button">
+        </form>
+
+    </main>
+    <script>
+        const body = document.querySelector('.body');
+        const select = document.querySelector('.select');
+
+        function changeTheme() {
+            switch (select.value) {
+                case 'herb':
+                    body.style.backgroundColor = 'rgb(33, 184, 134)';
+                    break;
+                case 'rose':
+                    body.style.backgroundColor = '#ed3bc7';
+                    break;
+                case 'sea':
+                    body.style.backgroundColor = '#0e758a';
+                    break;
+                case 'cosmos':
+                    body.style.backgroundColor = '#380d70';
+                    break;
+            }
+
+        }
+        select.addEventListener('change', changeTheme);
+
+
+        let login = document.getElementById('text')
+        let email = document.getElementById('email')
+        let password = document.getElementById('password')
+        let conf = document.getElementById('approve')
+        let tel = document.getElementById('tel')
+        const form = document.querySelector('.form');
+        const inputs = document.querySelectorAll('.form__item');
+
+        let validArr = [];
+
+        form.addEventListener('submit', function (evt) {
+
+            if (conf.value !== password.value) {
+                evt.preventDefault();
+                alert('Пароли не совпадают.');
+            } else {
+                alert('Спасибо за регистрацию!');
+            }
+
+        }
+        );
+        let allInputs = [...document.querySelectorAll('.form__item_color')].forEach(item => {
+            item.addEventListener('change', () => {
+                if (!item.validity.valid) {
+                    item.classList.add("error");
+                } else {
+                    item.classList.remove("error");
+                    item.classList.add("valid");
+                }
+
+            });
+        });
+
+
+
+        /*if (login.value.length < 5) {
+evt.preventDefault();
+alert('Логин должен содержать минимум 5 символов.');
+}
+else if (password.value.length < 6) {
+evt.preventDefault();
+alert('Пароль должен содержать 6 знаков.');
+}
+if (inputs === 0) {
+evt.preventDefault();
+alert('Заполни все поля!');
+
+} else {
+alert('Спасибо за регистрацию!');
+}
+
+
+else if (inputs.value == 0) {
+evt.preventDefault();
+}
+else if (conf.value !== password.value) {
+evt.preventDefault();
+alert('Пароли не совпадают.');
+
+}
+else if (tel.value.length !== 12) {
+evt.preventDefault();
+alert('Введите корректный номер телефона.');
+}
+
+else {
+alert('Спасибо за регистрацию!');
+}
+
+});*/
+//input:valid {
+           // border-color: rgb(33, 184, 134);
+       // }
+
+
+    </script>
+
+</body>
+
+</html>
