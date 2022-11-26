@@ -97,7 +97,7 @@
 
             let name = localStorage.getItem("name");
             if (name !== null) {
-                document.getElementById("author").value = name;
+                document.getElementById('author').value = name;
             }
             let avatar = localStorage.getItem("avatar");
             if (avatar !== null) {
@@ -128,6 +128,7 @@
                     link =
                         'https://abrakadabra.fun/uploads/posts/2021-12/thumbs/1640528649_39-abrakadabra-fun-p-serii-chelovek-na-avu-44.jpg';
                 }
+
                 newStrForAdding += `<div><img src='${link}' height="50px"/><br><span>${author}</span>:<span>${spamCheck}</span></div>`;
             }
             allComments.push(newStrForAdding);
