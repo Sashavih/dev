@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sasha</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup {
+            margin: 100px;
+            padding: 34px 36px 37px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+        }
+
+        .popup__form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .popup__input {
+            width: 358px;
+            height: 50px;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.21em;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        #phone {
+            outline: none;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            padding-bottom: 15px;
+            margin: 20px 0 0;
+        }
+
+        .popup__button {
+            padding: 0;
+            margin: 0;
+            margin-top: 48px;
+            width: 358px;
+            height: 50px;
+            background-color: #000000;
+            border: none;
+            border-radius: 2px;
+            color: #ffffff;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.22em;
+            text-align: center;
+        }
+
+        .popup__button:hover {
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .error {
+            width: 358px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="popup">
+                <h3 class="popup__title">Новое фото</h3>
+                <form class="popup__form" name="place" novalidate>
+                    <input type="text" id="name-card" name="name" class="popup__input popup__input_type_name"
+                        minlength="8" maxlength="30" required placeholder="Название" />
+                    <span id="name-card-error" class="error"></span>
+                    <input type="url" id="link" name="link" class="popup__input popup__input_type_url" required
+                        placeholder="Ссылка на картинку" />
+                    <span id="link-error" class="error"></span>
+                    <button type="submit" class="button popup__button popup__button_add">Добавить</button>
+                </form>
+            </div>
+            <div class="popup">
+                <h3 class="popup__title">Профиль</h3>
+                <form class="popup__form" name="user" novalidate>
+                    <input type="text" id="user-name" name="user-name" class="popup__input" minlength="2" required
+                        placeholder="Имя" />
+                    <span id="user-name-error" class="error"></span>
+                    <input type="text" id="about" name="about" class="popup__input" minlength="2" required
+                        placeholder="О себе" />
+                    <span id="about-error" class="error"></span>
+                    <input type="email" id="email" name="email" class="popup__input" minlength="2" required
+                        placeholder="Email" />
+                    <span id="email-error" class="error"></span>
+                    <input type="tel" class="phone__input" id="phone" name="phone" required
+                        placeholder="Введите телефон" title="Введите телефон в формате +7 999 999 99 99" />
+                    <span id="phone-error" class="error"></span>
+                    <button type="submit" class="button popup__button popup__button_edit">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const placeForm = document.forms.place;
+        const userForm = document.forms.user;
+
+        const ERRORS = {
+            empty: 'Введите, пожалуйста, данные',
+            wrongLength: 'Введите имя от 8 до 30 символов',
+        };
+
+        const checkInputValidity = (input) => {
+            // input.setCustomValidity('');
+
+            if (input.validity.valueMissing) {
+                input.setCustomValidity(ERRORS.empty);
+                return false;
+            }
+
+            if (input.validity.tooShort || input.validity.tooLong) {
+                input.setCustomValidity(ERRORS.wrongLength);
+                return false;
+            }
+
+            if (input.validity.typeMismatch && input.type === 'url') {
+                input.setCustomValidity('Введите ссылку, пожалуйста');
+                return false;
+            }
+
+            if (input.validity.typeMismatch && input.type === 'email') {
+                input.setCustomValidity('Введите вашу почту, пожалуйста');
+                return false;
+            }
+
+            if (input.validity.typeMismatch && input.type === 'tel') {
+                input.setCustomValidity('Введите ваш телефон, пожалуйста');
+                return false;
+            }
+        };
+
+        const setButtonState = (button, isValid) => {
+            if (!isValid) {
+                button.disabled = false;
+            } else {
+                button.disabled = true;
+            }
+        };
+
+        const validateInput = (a) => {
+            const errorElement = a.parentNode.querySelector(`#${a.id}-error`);
+            console.log(errorElement);
+            checkInputValidity(a);
+            errorElement.textContent = a.validationMessage;
+        };
+
+        const handleInput = (event) => {
+            const currentForm = event.currentTarget;
+            const input = event.target;
+            const button = currentForm.querySelector('.button');
+            validateInput(input);
+            setButtonState(button, currentForm.checkValidity());
+            console.log(currentForm.checkValidity());
+        };
+
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            console.log(event);
+        };
+
+        placeForm.addEventListener('submit', handleSubmit);
+        userForm.addEventListener('submit', handleSubmit);
+
+        placeForm.addEventListener('input', handleInput);
+        userForm.addEventListener('input', handleInput);
+
+                //const phoneNumber = document.getElementById('phone');
+                //const maskOptions = {
+                 //   mask: '+{7}(000)000-00-00',
+                //};
+                //const mask = IMask(phoneNumber, maskOptions);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" placeholder="Имя питомца" id="name">
+        <input type="text" placeholder="Порода" id="breed">
+        <input type="text" placeholder="Пол" id="gender">
+        <input type="text" placeholder="Возраст" id="age">
+        <button type="submit" id="btn">Отправить</button>
+    </div>
+    <script>
+        let btn = document.getElementById('btn');
+
+        function clickButton() {
+            class Pet {
+                constructor(name, breed, gender, age) {
+                    this.petName = name;
+                    this.petBreed = breed;
+                    this.gender = gender;
+                    this.age = age;
+                }
+            }
+
+            let dog = new Pet(document.getElementById('name').value, document.getElementById('breed').value, document
+                .getElementById('gender').value, document.getElementById('age').value);
+            console.log(dog)
+        }
+        btn.addEventListener('click', clickButton);
+
+
+    </script>
+</body>
+
+</html>
