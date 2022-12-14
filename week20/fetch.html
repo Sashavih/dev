@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img {
+            max-width: 50%;
+            margin-top: 1em;
+        }
+
+        .exp {
+            width: 65%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="data"></h1>
+    <h2 class="title"></h2>
+    <div class="exp"></div>
+    <img src="" class="img">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function (evt) {
+            getWeather('Palermo')
+        });
+        function getWeather(city) {
+            fetch('https://api.nasa.gov/planetary/apod?api_key=ppwIDvFuABtdyOoqAX6ZLBcfbqdQwMDbmocbXM9T')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    document.querySelector('.title').innerHTML = data.title;
+                    document.querySelector('.data').innerHTML = "Date:" + "<br>" + data.date;
+                    document.querySelector('.exp').innerHTML = data.explanation;
+                    document.querySelector('.img').src = data.url;
+                })
+        }
+    </script>
+</body>
+
+</html>
