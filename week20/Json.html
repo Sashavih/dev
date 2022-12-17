@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(101, 101, 101);
+        }
+
+
+        #herousContainer {
+            display: flex;
+            flex-direction: row wrap;
+            justify-content: space-between;
+
+            color: gold;
+        }
+
+        .heroItem__img {
+            max-width: 18em;
+        }
+
+        .heroItem {
+            width: 30%;
+            padding: auto;
+            margin-top: 2em;
+            text-align: center;
+        }
+
+        .heroBox {
+            padding: 2em;
+            width: 20%;
+            height: 29em;
+            background-color: rgb(86, 86, 86);
+        }
+
+        .btn {
+            background-color: rgb(68, 68, 68);
+            border: none;
+            width: 4em;
+            height: 1.7em;
+            border-radius: 10px;
+            color: gold;
+
+        }
+
+        .radio {
+            margin: 0.7em auto;
+        }
+    </style>
+</head>
+
+<body>
+    <article id="herousContainer">
+    </article>
+    <script>
+        let herous = [{
+            "id": "1",
+            "image": "https://geekcity.ru/wp-content/uploads/2013/04/Where-to-start-reading-Iron-Man-comics.jpg",
+            "name": "Iron Man",
+            "universe": "Marvel",
+            "alterego": "Tony Stark",
+            "friends": "Avengers",
+            "powers": "high level of intelligence,knowledge of science and technology"
+        },
+        {
+            "id": "2",
+            "image": "https://geekhero.ru/wp-content/uploads/2011/11/1039288-jim_lee_superman-e1431410009425.jpg",
+            "name": "Superman",
+            "universe": "DC Comics",
+            "alterego": "Clark Kent",
+            "friends": "Dog Crypto",
+            "powers": "super strenght,self-healing,super vision & hearing"
+        },
+        {
+            "id": "3",
+            "image": "https://geekcity.ru/wp-content/uploads/2014/04/Where-to-start-reading-Captain-America-Comics.jpg",
+            "name": "Captain America",
+            "universe": "Marvel",
+            "alterego": "Stephen Rogers",
+            "friends": "Avengers",
+            "powers": "strength,endurance,immortality,combat skill", "occupation": "Soldier"
+        }]
+        herous = JSON.stringify(herous)
+        let parseHerous = JSON.parse(herous);
+        console.log(parseHerous)
+
+        document.addEventListener('DOMContentLoaded', function (event) {
+            let herousContent = '';
+            for (let hero of parseHerous) {
+                herousContent += `<section class='heroBox'><h2>${hero.name}</h2><div>Universe: ${hero.universe}</div><div>Alter Ego: ${hero.alterego}</div><div>Friends: ${hero.friends}</div>` + ((hero.occupation == undefined) ? '' : `<div>Occupattion: ${hero.occupation}</div>`) + `<div>Powers: ${hero.powers}</div><div class='heroItem'><img class='heroItem__img' src=${hero.image}></div><div class="radio"><div id="ratingOutput_${hero.id}"></div>
+                    <label for="one">1</label>  	
+<input type="radio" id="one" name="rating" value="1">
+<label for="two">2</label>  	
+<input type="radio" id="two" name="rating" value="2">
+<label for="three">3</label>  	
+<input type="radio" id="three" name="rating" value="3">
+<label for="four">4</label>  	
+<input type="radio" id="four" name="rating" value="4">
+<label for="five">5</label>  	
+<input type="radio" id="five" name="rating" value="5"></div>
+<button class="btn" id="btn_${hero.id}" type="submit">Send</button>
+</div></section>`;
+            }
+            document.getElementById('herousContainer').innerHTML = herousContent;
+            for (const hero of parseHerous) {
+                document
+                    .getElementById(`btn_${hero.id}`)
+                    .addEventListener('click', function () {
+                        let radios = document.getElementsByName("rating");
+                        let selected = Array.from(radios).find(radio => radio.checked);
+                        document.getElementById(`ratingOutput_${hero.id}`).innerHTML = `${selected.value}/5`;
+                        localStorage.setItem(`localRating_${hero.id}`, `${selected.value}/5`);
+                    });
+                if (localStorage.getItem(`localRating_${hero.id}`) !== null) {
+                    document.getElementById(`ratingOutput_${hero.id}`).innerHTML = localStorage.getItem(`localRating_${hero.id}`);
+                    console.log(localStorage.getItem(`localRating_${hero.id}`));
+                }
+            }
+        });
+        console.log(document.getElementsByClassName('btn'))
+
+
+
+        parseHerous.forEach((i) => {
+            console.log(i.name)
+        });
+
+
+    </script>
+</body>
+
+</html>
