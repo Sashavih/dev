@@ -58,7 +58,7 @@
     <article id="herousContainer">
     </article>
     <script>
-        let herous = [{
+        let herous = `[{
             "id": "1",
             "image": "https://geekcity.ru/wp-content/uploads/2013/04/Where-to-start-reading-Iron-Man-comics.jpg",
             "name": "Iron Man",
@@ -84,8 +84,7 @@
             "alterego": "Stephen Rogers",
             "friends": "Avengers",
             "powers": "strength,endurance,immortality,combat skill", "occupation": "Soldier"
-        }]
-        herous = JSON.stringify(herous)
+        }]`
         let parseHerous = JSON.parse(herous);
         console.log(parseHerous)
 
