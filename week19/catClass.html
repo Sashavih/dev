@@ -28,11 +28,23 @@
                     this.age = age;
                 }
             }
-
             let dog = new Pet(document.getElementById('name').value, document.getElementById('breed').value, document
                 .getElementById('gender').value, document.getElementById('age').value);
-            console.log(dog)
+            console.log(dog.petName)
+            fetch('https://httpbin.org/post', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(dog)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => console.log(error));
         }
+
         btn.addEventListener('click', clickButton);
 
 
