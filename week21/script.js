@@ -15,5 +15,11 @@ btn.addEventListener('click', function (event) {
             document.querySelector('#img4').src = elem.data[3].images.downsized.url;
             document.querySelector('#img5').src = elem.data[4].images.downsized.url;
         })
+    try {
+        if (window.navigator.online == false)
+            throw new Error('No Internet Connection');
+    } catch (error) {
+        console.log(`Oops, ' + ${error.message}`);
+    }
 
 });
