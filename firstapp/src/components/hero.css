@@ -1,0 +1,55 @@
+.HeroApp {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.hero-card {
+    width: 21em;
+    margin: 1%;
+    background-color: rgb(121, 121, 121);
+    transition: 1s;
+}
+
+.hero-card img {
+    height: 11em;
+    width: 21em;
+
+}
+
+.hero-text {
+    padding: 1em;
+}
+
+.hero-name {
+    color: rgb(59, 0, 96);
+    font-size: x-large;
+    font-weight: 500;
+    padding-bottom: 1%;
+    cursor: default;
+
+}
+
+.hero-name:hover {
+    color: rgb(42, 0, 67);
+}
+
+.hero-img {
+    display: inline-block;
+    /* Строчно-блочный элемент */
+    overflow: hidden;
+    /* Скрываем всё за контуром */
+}
+
+.hero-img img {
+    transition: 1s;
+    /* Время эффекта */
+    display: block;
+    /* Убираем небольшой отступ снизу */
+}
+
+.hero-img img:hover {
+    transform: scale(1.2);
+    /* Увеличиваем масштаб */
+}
