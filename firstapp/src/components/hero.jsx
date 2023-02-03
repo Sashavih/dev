@@ -7,9 +7,9 @@ function Hero(props) {
             <div className='hero-img'><img src={props.url} /></div>
             <div className='hero-text'>
                 <div className="hero-name">{props.name}</div>
-                <div className="hero-city">Откуда: {props.city}</div>
-                <div className="hero-about">О герое: {props.about}</div>
-                {props.friend && <div className="hero-friend">Друг: {props.friend}</div>}
+                <div className="hero-city"><span className='color'>Откуда:</span> {props.city}</div>
+                <div className="hero-about"><span className='color'>О герое</span>: {props.about}</div>
+                {props.friend && <div className="hero-friend"><span className='color'>Друг:</span> {props.friend}</div>}
             </div>
         </div>
     );

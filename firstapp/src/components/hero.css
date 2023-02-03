@@ -53,3 +53,9 @@
     transform: scale(1.2);
     /* Увеличиваем масштаб */
 }
+
+.color {
+    color: rgb(59, 0, 96);
+    font-weight: 500;
+
+}
