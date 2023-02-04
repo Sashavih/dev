@@ -4,7 +4,7 @@ import './hero.css';
 function Hero(props) {
     return (
         <div className="hero-card">
-            <div className='hero-img'><img src={props.url} /></div>
+            <div className='hero-img'><img src={props.url} alt='hero' /></div>
             <div className='hero-text'>
                 <div className="hero-name">{props.name}</div>
                 <div className="hero-city"><span className='color'>Откуда:</span> {props.city}</div>
