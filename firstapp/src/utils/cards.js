@@ -7,7 +7,7 @@ const herous = [
     { name: "Vesemir", url: "https://dc-marvel.ru/wp-content/uploads/zagruzhennoe.jpg", city: "Каэр Морхен", about: "Сарейший, самый опытный и уважаемый ведьмак из Школы Волка, являвшийся её мастером и хранителем традиций Цеха.чародейка и целительница, один из самых молодых, но вместе с тем самых талантливых магов Севера. Имеет близкие", friend: "Геральд" },
     { name: "Eskel", url: "https://gwentguru.info/assets/images/guide/2018/eskel-title.jpg", city: "Ривия", about: "Ведьмак из Школы Волка и друг детства Геральта,опытный и искусный охотник на чудовищ, ничем не уступающий Геральту, однако он не снискал такую славу, как его коллега по цеху.", friend: "Геральд" },
     { name: "Meve", url: "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2020/02/Meve.jpg", city: "Лирия", about: "Также известная как Белая Королева,вдовствующая королева Лирии и Ривии.Известна среди правителей Северных королевств своей мудростью, женской интуицией и красотой" },
-    { name: "Kaer Morhen", url: "https://letsplayers.ru/wp-content/uploads/2020/04/112678_8G7YpYqbGE_witcher3_2015_05_20_23_49_57_11.jpg", city: "Каррерас", about: "Чародейка, бывшая советница короля Темерии Фольтеста.", friend: "Трисс" }
+    { name: "Keira Metz", url: "https://letsplayers.ru/wp-content/uploads/2020/04/112678_8G7YpYqbGE_witcher3_2015_05_20_23_49_57_11.jpg", city: "Каррерас", about: "Чародейка, бывшая советница короля Темерии Фольтеста.", friend: "Трисс" }
 
 ]
 export default herous;
