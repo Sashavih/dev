@@ -23,7 +23,7 @@ class HeroApp extends React.Component {
         <HeroLogo></HeroLogo>
         <div className='HeroApp'>{
           herous.map((hero) =>
-            <Hero name={hero.name} url={hero.url} city={hero.city} about={hero.about} friend={hero.friend}></Hero>
+            <Hero key={hero} name={hero.name} url={hero.url} city={hero.city} about={hero.about} friend={hero.friend}></Hero>
           )
         }
         </div>
@@ -35,3 +35,4 @@ class HeroApp extends React.Component {
 
 
 export default HeroApp;
+
