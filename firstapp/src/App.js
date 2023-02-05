@@ -22,8 +22,8 @@ class HeroApp extends React.Component {
       <React.Fragment>
         <HeroLogo></HeroLogo>
         <div className='HeroApp'>{
-          herous.map((hero) =>
-            <Hero key={hero} name={hero.name} url={hero.url} city={hero.city} about={hero.about} friend={hero.friend}></Hero>
+          herous.map((hero, index) =>
+            <Hero key={index} name={hero.name} url={hero.url} city={hero.city} about={hero.about} friend={hero.friend}></Hero>
           )
         }
         </div>
