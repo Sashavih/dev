@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Hero from './components/hero';
-
+import HeroLogo from './components/logo';
 
 const herous = [
   { name: "Geralt", url: "https://games.mail.ru/hotbox/content_files/article/2022/12/14/69d15f1573aa4ff8bd29e1846592e322.jpg", city: "Не известно", about: "Ведьмак из Школы Волка, профессиональный охотник на монстров, один из лучших фехтовальщиков Севера", friend: "Эскель" },
@@ -20,7 +20,7 @@ class HeroApp extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className='logo'><img src='https://notorgames.net/wp-content/uploads/2022/06/The-Witcher.jpeg' alt='logo-witcher' ></img></div>
+        <HeroLogo></HeroLogo>
         <div className='HeroApp'>{
           herous.map((hero) =>
             <Hero name={hero.name} url={hero.url} city={hero.city} about={hero.about} friend={hero.friend}></Hero>
@@ -32,5 +32,6 @@ class HeroApp extends React.Component {
 
   }
 }
+
 
 export default HeroApp;
