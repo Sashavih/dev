@@ -1,0 +1,20 @@
+.card-box {
+    margin: 2em auto;
+    padding: 2%;
+    width: 15%;
+    height: 14em;
+    background-color: rgb(240, 240, 240);
+}
+
+.card-box__text {
+    text-align: left;
+    margin-top: 3em;
+}
+
+.card-box p {
+    padding: 1%;
+    text-transform: uppercase;
+    font-size: smaller;
+    font-weight: 500;
+    color: rgb(84, 84, 84);
+}

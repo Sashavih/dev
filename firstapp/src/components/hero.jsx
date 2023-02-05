@@ -15,7 +15,7 @@ function Hero(props) {
     );
 }
 export default Hero;
-//<div className="hero-friend">({props.friend} == undefined) ? '' : Друг: {props.friend}</div>
+
 /*class Hero extends React.Component {
     redder() {
         const { name, url, city, about, friend } = this.props;
