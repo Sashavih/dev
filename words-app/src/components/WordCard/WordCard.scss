@@ -1,9 +1,11 @@
 .card-box {
+
     margin: 2em auto;
     padding: 2%;
     width: 15%;
     height: 14em;
-    background-color: rgb(240, 240, 240);
+    background-color: #eebb5d;
+    color: #d8d8d8;
 }
 
 .card-box__text {
@@ -16,5 +18,5 @@
     text-transform: uppercase;
     font-size: smaller;
     font-weight: 500;
-    color: rgb(84, 84, 84);
+    color: #cdcdcd;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import './word-card.css';
+import './WordCard.scss';
 
 class WordCard extends React.Component {
     render() {
