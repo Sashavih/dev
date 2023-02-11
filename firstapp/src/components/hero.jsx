@@ -17,7 +17,7 @@ function Hero(props) {
 export default Hero;
 
 /*class Hero extends React.Component {
-    redder() {
+    render() {
         const { name, url, city, about, friend } = this.props;
         return (
             <div className="hero-card">

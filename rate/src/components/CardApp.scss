@@ -1,0 +1,56 @@
+.CardApp {
+    display: flex;
+    flex-direction: row;
+    padding: 3em;
+    width: 70%;
+    margin: auto;
+
+}
+
+.cardBox {
+    background-color: #f3f3f3;
+    width: 15em;
+    padding: 1em;
+    transition: 0.8s;
+
+    .price {
+        font-size: 26px;
+    }
+}
+
+.large {
+    transform: scale(1.05);
+    background-color: rgb(221, 221, 221);
+}
+
+.card1 {
+    background-color: rgb(33, 202, 146);
+}
+
+.card2 {
+    background-color: rgb(37, 202, 73);
+}
+
+.card3 {
+    background-color: rgb(165, 37, 194);
+}
+
+.card4 {
+    background-color: rgb(201, 44, 141);
+}
+
+.color1 {
+    background-color: rgb(170, 239, 216);
+}
+
+.color2 {
+    background-color: rgb(134, 233, 155);
+}
+
+.color3 {
+    background-color: rgb(207, 137, 223);
+}
+
+.color4 {
+    background-color: rgb(230, 153, 200);
+}

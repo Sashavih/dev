@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Hero from './components/hero';
-import HeroLogo from './components/logo';
+import Hero from './components/Hero';
+import HeroLogo from './components/HeroLogo';
 import herous from './utils/cards';
 
 

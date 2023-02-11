@@ -1,0 +1,27 @@
+$orange: #F4A460;
+$rosy: #BC8F8F;
+$purple: #8A2BE2;
+$blue: #1E90FF;
+
+.cardBox {
+   width: 15em;
+   padding: 1em;
+
+}
+
+.rosy {
+   background-color: $orange;
+
+}
+
+.blue {
+   background-color: $blue;
+}
+
+.purple {
+   background-color: $purple;
+}
+
+.orange {
+   background-color: $rosy;
+}
