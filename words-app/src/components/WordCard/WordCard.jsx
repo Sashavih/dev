@@ -1,19 +1,52 @@
 import React from "react";
+import { useState } from "react";
 import './WordCard.scss';
 
-class WordCard extends React.Component {
+function WordCard(props) {
+    const [pressed, setPressed] = useState(false);
+
+    const handleChange = () => {
+        setPressed(!pressed);
+    }
+
+    return (
+        <div className="card-box">
+            <h2>Book</h2>
+            <div className="card-box__text">
+                <p className="card-box__transcription">[' bʊk ']</p>
+                {pressed ? <button onClick={handleChange} className="card-box__translate">Книга</button> : <button onClick={handleChange} type="button" className="card-box__btn">проверить</button>}
+
+            </div>
+        </div >
+    )
+}
+
+export default WordCard;
+
+/*class WordCard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            pressed: false
+        };
+    }
+    handleChange = () => {
+        this.setState(
+            { pressed: !this.state.pressed }
+        )
+    };
+
     render() {
         return (
             <div className="card-box">
-                <h2>WORD</h2>
+                <h2>Book</h2>
                 <div className="card-box__text">
-                    <p className="card-box__transcription">Транскрипция:</p>
-                    <p className="card-box__translate">Перевод:</p>
-                    <p className="card-box__topic">Тема:</p>
+                    <p className="card-box__transcription">[' bʊk ']</p>
+                    {this.state.pressed ? <button onClick={this.handleChange} className="card-box__translate">Книга</button> : <button onClick={this.handleChange} type="button" className="card-box__btn">проверить</button>}
                 </div>
-            </div>
+            </div >
         )
     }
 }
 
-export default WordCard;
+export default WordCard;*/

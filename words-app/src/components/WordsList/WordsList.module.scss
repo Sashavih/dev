@@ -14,18 +14,34 @@ $grayBackground: #121212;
 .table {
     display: grid;
     width: 70%;
-    height: 3em;
+    height: 3.5em;
     margin: auto;
     grid-template-columns: 3% 1fr 1fr 1fr 18%;
-
     color: #d8d8d8;
+
+    input {
+        background-color: #f6f6f654;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        outline: none;
+        padding: 0.5em;
+        width: 60%;
+        height: 2em;
+
+
+    }
 
     div {
         align-items: center;
-        border-bottom: 1px solid rgba(197, 197, 197, 0.227);
+        border-bottom: 1px solid rgba(197, 197, 197, 0.178);
         border-right: 1px solid rgba(197, 197, 197, 0.178);
+        padding-top: 0.4em;
+        box-sizing: border-box;
     }
+
 }
+
 
 .blueClick {
     background-color: #947fff;
@@ -59,18 +75,22 @@ $grayBackground: #121212;
 
     .btnSave {
         background: url('./check.png')0 0 /100% no-repeat;
-    }
-
-    .btnNone {
-        background-color: $purple;
+        width: 3.1em;
     }
 
     .btnEdit {
+        width: 2.5em;
         background: url('./pencil.png')0 0 /100% no-repeat;
     }
 
     .btnDelete {
+        width: 2.5em;
         background: url('./delete.png')0 0 /100% no-repeat;
+    }
+
+    .btnClear {
+        width: 2.5em;
+        background: url('./Component3.png')0 0 /100% no-repeat;
     }
 
 
@@ -123,9 +143,10 @@ $grayBackground: #121212;
 }
 
 .fade {
-    background-color: $grayBackground;
+    background-color: #212121;
+    ;
 }
 
 .boldFont {
-    font-weight: 600;
+    font-weight: 700;
 }
