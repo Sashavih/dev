@@ -1,0 +1,85 @@
+.App {
+  width: 95%;
+  margin: 2em auto 0 auto;
+}
+
+.chartBox {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2em;
+  text-align: center;
+  margin: auto;
+}
+
+.chartBox__item {
+  position: relative;
+  background-color: #171820;
+  padding: 0.5em 1em 1em 1em;
+  border-radius: 10px;
+}
+
+.chartBox__small {
+  height: 8em;
+}
+
+.chartBox__middle {
+  width: 12em;
+  height: 8em;
+}
+
+.chartBox__big {
+  width: 13em;
+}
+
+.title {
+  width: 88%;
+  padding-left: 0.9em;
+  font-family: 'Inter', sans-serif;
+  font-size: 90px;
+  background: url('./Line.png') 169% 79% no-repeat;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .chartBox {
+    justify-content: start;
+  }
+
+}
+
+@media screen and (min-width: 380px) and (max-width: 767px) {
+  .title {
+    font-size: 60px;
+    background: none;
+  }
+
+  .chartBox {
+    gap: 1.2em;
+  }
+
+  .chartBox__item {
+    max-width: 75%;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 379px) {
+  .chartBox {
+    flex-direction: column;
+    align-content: center;
+    gap: 1em;
+  }
+
+  .chartBox__item {
+    max-width: 75%;
+    height: 100%;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 28px;
+    background: none;
+  }
+}

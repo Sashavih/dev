@@ -30,7 +30,8 @@
             }
             let dog = new Pet(document.getElementById('name').value, document.getElementById('breed').value, document
                 .getElementById('gender').value, document.getElementById('age').value);
-            console.log(dog.petName)
+            console.log(dog.petName);
+
             async function usePost() {
                 let response = await fetch('https://httpbin.org/post', {
                     method: 'POST',
@@ -45,6 +46,12 @@
             usePost();
         }
         btn.addEventListener('click', clickButton);
+
+        function check() {
+            let a = "1", b = 0, c = "false";
+            return a || b ? b + !!c == a : c;
+        }
+        console.log(check());
 
 
     </script>

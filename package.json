@@ -2,6 +2,7 @@
   "dependencies": {
     "babel-loader": "^9.1.2",
     "classnames": "^2.3.2",
+    "i": "^0.3.7",
     "node-sass": "^8.0.0",
     "react-google-charts": "^4.0.0"
   }
